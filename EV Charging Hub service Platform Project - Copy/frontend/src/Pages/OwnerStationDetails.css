@@ -1,0 +1,1028 @@
+/* =========================================================
+   STATION OWNER - STATION MANAGEMENT DETAILS PAGE STYLES
+   EVChargeHub Owner Portal
+========================================================= */
+
+/* TOP BREADCRUMB & QUICK STATUS */
+.details-top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.details-quick-status-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #dfe6e2;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.details-quick-status-control label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.details-status-select {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.details-status-select.status-active {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #86efac;
+}
+
+.details-status-select.status-inactive {
+  background: #f1f5f9;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+.details-status-select.status-maintenance {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.details-status-select.status-draft {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+
+/* HEADER */
+.details-header {
+  margin-bottom: 24px;
+}
+
+.details-header-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title-and-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.details-header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 750;
+  color: #111827;
+  letter-spacing: -0.4px;
+}
+
+.details-header-sub {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  color: #64748b;
+}
+
+.details-header-sub svg {
+  color: #079b43;
+  flex-shrink: 0;
+}
+
+.details-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.details-badge-pill.status-active {
+  background: #e8f8ee;
+  color: #079b43;
+  border: 1px solid #a7e5bf;
+}
+
+.details-badge-pill.status-inactive {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.details-badge-pill.status-maintenance {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.details-badge-pill.status-draft {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.details-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.details-action-btn.edit {
+  background: #079b43;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(7, 155, 67, 0.25);
+}
+
+.details-action-btn.edit:hover {
+  background: #067d36;
+  transform: translateY(-1px);
+}
+
+.details-action-btn.chargers {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #bfdbfe;
+}
+
+.details-action-btn.chargers:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* =========================================================
+   MANAGEMENT STAT CARDS (4 CARDS)
+========================================================= */
+
+.details-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.details-stat-card {
+  background: #ffffff;
+  border: 1px solid #e5ebe7;
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.details-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================================
+   TWO-COLUMN OPERATIONAL WORKSPACE
+========================================================= */
+
+.details-content-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.details-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.details-side-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* SECTION CARDS */
+.details-section-card {
+  background: #ffffff;
+  border: 1px solid #e5ebe7;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.card-head-with-action {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 12px;
+}
+
+.card-head-with-action h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 750;
+  color: #111827;
+  letter-spacing: -0.3px;
+}
+
+.card-head-with-action p {
+  margin: 3px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.section-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #079b43;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.section-action-link:hover {
+  color: #067d36;
+}
+
+/* HERO OVERVIEW CARD */
+.hero-overview-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero-overview-media {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: #e2e8f0;
+}
+
+.hero-overview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay-tags {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.power-pill {
+  background: rgba(17, 24, 39, 0.85);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+}
+
+.source-pill {
+  background: rgba(7, 155, 67, 0.9);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
+}
+
+.hero-overview-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.overview-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.overview-title-row h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 750;
+  color: #111827;
+}
+
+.type-badge {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #079b43;
+  background: #eaf8ef;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.overview-rating-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fef9c3;
+  color: #854d0e;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
+}
+
+.overview-rating-badge svg {
+  color: #eab308;
+}
+
+.overview-description {
+  margin: 0;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.overview-spec-pills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: #f8faf9;
+  border: 1px solid #edf2ef;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.spec-pill-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-pill-item small {
+  font-size: 11px;
+  font-weight: 600;
+  color: #718096;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.spec-pill-item strong {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* CHARGER MANAGEMENT GRID */
+.chargers-management-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.charger-unit-card {
+  background: #f8faf9;
+  border: 1px solid #e1e9e4;
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.charger-unit-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.connector-type-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.connector-type-badge svg {
+  color: #079b43;
+}
+
+.power-tag {
+  background: #111827;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.charger-unit-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #edf2ef;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.unit-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.unit-stat small {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.unit-stat strong {
+  font-size: 13.5px;
+  color: #1e293b;
+  margin-top: 2px;
+}
+
+.charger-unit-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #526058;
+  font-weight: 600;
+}
+
+.status-indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.status-indicator-dot.online {
+  background: #10b981;
+}
+
+/* 24 HOURS BANNER & TIMETABLE */
+.twentyfour-hours-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: #eaf8ef;
+  border: 1px solid #c3edd2;
+  color: #065f46;
+}
+
+.banner-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #079b43;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.twentyfour-hours-banner strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 750;
+  margin-bottom: 2px;
+}
+
+.twentyfour-hours-banner p {
+  margin: 0;
+  font-size: 13px;
+  color: #047857;
+  line-height: 1.5;
+}
+
+.weekly-hours-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weekly-day-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #fbfdfc;
+  border: 1px solid #f1f5f3;
+  font-size: 13.5px;
+}
+
+.weekly-day-row.closed {
+  background: #f8fafc;
+  opacity: 0.7;
+}
+
+.day-name {
+  font-weight: 650;
+  color: #1e293b;
+  min-width: 100px;
+}
+
+.day-badge {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.day-badge.open {
+  background: #e8f8ee;
+  color: #079b43;
+}
+
+.day-badge.closed {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.day-time-slot {
+  font-weight: 600;
+  color: #475569;
+}
+
+/* FACILITIES PILLS */
+.details-facilities-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.details-facility-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 9px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #065f46;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.facility-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #079b43;
+  color: white;
+}
+
+.no-facilities-msg {
+  color: #94a3b8;
+  font-size: 13.5px;
+  font-style: italic;
+  margin: 0;
+}
+
+/* =========================================================
+   RIGHT COLUMN SIDEBAR CARDS
+========================================================= */
+
+.details-side-card {
+  background: #ffffff;
+  border: 1px solid #e5ebe7;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.side-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f3;
+}
+
+.side-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.side-card-icon.green {
+  background: #eaf8ef;
+  color: #079b43;
+}
+
+.side-card-icon.emerald {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.side-card-icon.blue {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.side-card-head h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 750;
+  color: #111827;
+}
+
+.side-card-head span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* PRICING CARD */
+.pricing-rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.pricing-metric-box {
+  background: #f8faf9;
+  border: 1px solid #edf2ef;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-metric-box small {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.pricing-metric-box strong {
+  font-size: 16px;
+  font-weight: 750;
+  color: #1e293b;
+  margin: 2px 0;
+}
+
+.pricing-metric-box strong.price-big {
+  font-size: 22px;
+  color: #079b43;
+}
+
+.pricing-metric-box span {
+  font-size: 11.5px;
+  color: #839188;
+}
+
+.pricing-alert-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+  padding: 10px;
+  background: #fafcfb;
+  border-radius: 8px;
+  border: 1px dashed #cbdad1;
+}
+
+.pricing-alert-box svg {
+  color: #079b43;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* MAP FRAME */
+.details-map-frame {
+  width: 100%;
+  height: 190px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #dfe6e2;
+  margin-bottom: 14px;
+}
+
+.details-leaflet-map {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.location-details-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.loc-meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.loc-meta-item small {
+  font-size: 11px;
+  color: #718096;
+  font-weight: 600;
+}
+
+.loc-meta-item strong {
+  font-size: 13px;
+  color: #1e293b;
+  font-weight: 650;
+}
+
+.loc-meta-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+/* ACTIVITY TIMELINE */
+.activity-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+}
+
+.activity-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.activity-dot.green {
+  background: #10b981;
+}
+
+.activity-dot.blue {
+  background: #3b82f6;
+}
+
+.activity-dot.amber {
+  background: #f59e0b;
+}
+
+.activity-content strong {
+  display: block;
+  font-size: 13px;
+  color: #1e293b;
+}
+
+.activity-content p {
+  margin: 2px 0 3px;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.activity-content small {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* QUICK ACTIONS */
+.quick-actions-card h4 {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 750;
+  color: #111827;
+}
+
+.side-actions-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.side-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.side-action-btn.edit-full {
+  background: #079b43;
+  color: #ffffff;
+}
+
+.side-action-btn.edit-full:hover {
+  background: #067d36;
+}
+
+.side-action-btn.toggle-status.deactivate {
+  background: #fff1f2;
+  color: #e11d48;
+  border-color: #fecdd3;
+}
+
+.side-action-btn.toggle-status.deactivate:hover {
+  background: #e11d48;
+  color: #ffffff;
+}
+
+.side-action-btn.toggle-status.activate {
+  background: #ecfdf5;
+  color: #059669;
+  border-color: #a7f3d0;
+}
+
+.side-action-btn.toggle-status.activate:hover {
+  background: #059669;
+  color: #ffffff;
+}
+
+/* =========================================================
+   STATION NOT FOUND CARD
+========================================================= */
+
+.details-not-found-card {
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 60px 24px;
+  text-align: center;
+  max-width: 540px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.details-not-found-card h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 750;
+  color: #111827;
+}
+
+.details-not-found-card p {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.back-to-stations-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #079b43;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.back-to-stations-btn:hover {
+  background: #067d36;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+========================================================= */
+
+@media (max-width: 1200px) {
+  .details-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .details-content-layout {
+    grid-template-columns: 1fr 340px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .details-content-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .chargers-management-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-spec-pills {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .details-header-buttons {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .details-action-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .details-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .details-section-card {
+    padding: 18px 16px;
+  }
+
+  .weekly-day-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

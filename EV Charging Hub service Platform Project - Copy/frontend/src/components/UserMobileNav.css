@@ -1,0 +1,92 @@
+.user-mobile-nav {
+  display: none;
+}
+
+.nav-label-short {
+  display: none;
+}
+
+@media (max-width: 850px) {
+  .user-mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: rgba(18, 26, 21, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 4px;
+    z-index: 9999;
+  }
+
+  .user-mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: #94a39b;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 6px 4px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .user-mobile-nav-item:hover,
+  .user-mobile-nav-item.active {
+    color: #00d26a;
+  }
+
+  .user-mobile-nav-item.active {
+    background: rgba(0, 210, 106, 0.12);
+    font-weight: 600;
+  }
+
+  .user-mobile-nav-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.15;
+    font-size: 11px;
+  }
+
+  .new-main,
+  .find-main,
+  .my-bookings-main,
+  .history-main,
+  .fav-main,
+  .settings-main,
+  .help-main,
+  .details-main,
+  .booking-main,
+  .confirmation-main,
+  .booking-details-main,
+  .owner-main {
+    padding-bottom: 95px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-label-full {
+    display: none !important;
+  }
+
+  .nav-label-short {
+    display: inline !important;
+    font-size: 10.5px !important;
+  }
+
+  .user-mobile-nav-item {
+    padding: 4px 2px;
+  }
+}

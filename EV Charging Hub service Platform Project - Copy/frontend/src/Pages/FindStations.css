@@ -1,0 +1,2239 @@
+/* =========================================================
+   EVCHARGEHUB - FIND STATIONS
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.find-dashboard {
+  min-height: 100vh;
+  display: flex;
+  background: #f6f8f7;
+  color: #101828;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Arial, sans-serif;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.find-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 250px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 28px 18px 20px;
+
+  background: #ffffff;
+  border-right: 1px solid #e7ece9;
+}
+
+.find-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 10px;
+
+  text-decoration: none;
+}
+
+.find-logo-icon {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #08a349;
+}
+
+.find-logo-text {
+  color: #111827;
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
+.find-logo-text span {
+  color: #08a349;
+}
+
+
+/* MENU */
+
+.find-menu {
+  margin-top: 42px;
+}
+
+.find-menu > p {
+  margin: 0 14px 12px;
+
+  color: #98a29d;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.find-menu .find-menu-section {
+  margin-top: 29px;
+}
+
+.find-menu-item {
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 4px;
+  padding: 0 15px;
+
+  border-radius: 11px;
+
+  color: #526159;
+  text-decoration: none;
+
+  font-size: 13px;
+
+  transition: 0.2s ease;
+}
+
+.find-menu-item svg {
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+
+  stroke-width: 1.8;
+}
+
+.find-menu-item:hover {
+  color: #079b43;
+  background: #f2faf5;
+}
+
+.find-menu-item.active {
+  color: #079b43;
+
+  background: linear-gradient(
+    90deg,
+    #e3f7eb,
+    #edf9f2
+  );
+
+  font-weight: 650;
+}
+
+.find-menu-count {
+  width: 22px;
+  height: 22px;
+
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #dcf6e6;
+  color: #079b43;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* PROFILE */
+
+.find-profile {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  margin-top: auto;
+  padding: 18px 9px 2px;
+
+  border-top: 1px solid #edf1ef;
+}
+
+.find-profile-avatar {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #079b43,
+    #0fba58
+  );
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.find-profile-info {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.find-profile-info strong {
+  font-size: 11px;
+}
+
+.find-profile-info span {
+  margin-top: 3px;
+
+  color: #8b9690;
+
+  font-size: 13px;
+}
+
+.find-profile-more {
+  color: #8d9992;
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.find-main {
+  width: calc(100% - 250px);
+
+  margin-left: 250px;
+
+  padding: 25px 30px 40px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.find-header {
+  min-height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+}
+
+.find-header h1 {
+  margin: 0;
+
+  color: #101828;
+
+  font-size: 25px;
+  font-weight: 750;
+
+  letter-spacing: -0.8px;
+}
+
+.find-header p {
+  margin: 6px 0 0;
+
+  color: #7a8780;
+
+  font-size: 12px;
+}
+
+.find-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.find-notification {
+  position: relative;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e1e7e3;
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #34443b;
+
+  cursor: pointer;
+}
+
+.find-notification > span {
+  position: absolute;
+
+  top: 8px;
+  right: 9px;
+
+  width: 7px;
+  height: 7px;
+
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+
+  background: #ff4d5a;
+}
+
+.find-logout {
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0 18px;
+
+  border-radius: 11px;
+
+  background: #10221a;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   SEARCH HERO
+========================================================= */
+
+.station-search-hero {
+  position: relative;
+
+  min-height: 185px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  overflow: hidden;
+
+  padding: 31px 36px;
+
+  border: 1px solid #dceee3;
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(17, 190, 87, 0.15),
+      transparent 30%
+    ),
+    linear-gradient(
+      120deg,
+      #e7f8ed 0%,
+      #f5fbf7 55%,
+      #ffffff 100%
+    );
+
+  box-shadow: 0 7px 24px rgba(15, 65, 35, 0.05);
+}
+
+.station-search-text {
+  max-width: 440px;
+}
+
+.station-search-label {
+  color: #079b43;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.station-search-text h2 {
+  margin: 8px 0 0;
+
+  color: #101828;
+
+  font-size: 29px;
+  font-weight: 760;
+
+  letter-spacing: -1px;
+}
+
+.station-search-text h2 span {
+  color: #079b43;
+}
+
+.station-search-text p {
+  max-width: 410px;
+
+  margin: 9px 0 0;
+
+  color: #6c7972;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+
+/* MAIN SEARCH */
+
+.main-station-search {
+  width: min(480px, 46%);
+  height: 57px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 6px 6px 6px 17px;
+
+  border: 1px solid #dfe8e3;
+  border-radius: 13px;
+
+  background: #ffffff;
+
+  box-shadow: 0 9px 30px rgba(20, 50, 35, 0.08);
+}
+
+.main-station-search svg {
+  flex-shrink: 0;
+
+  color: #68776f;
+}
+
+.main-station-search input {
+  min-width: 0;
+  flex: 1;
+
+  margin-left: 10px;
+
+  border: none;
+  outline: none;
+
+  color: #27352d;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.main-station-search input::placeholder {
+  color: #9ca6a0;
+}
+
+.main-station-search button {
+  height: 43px;
+
+  padding: 0 20px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #08a349;
+  color: white;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.station-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-top: 15px;
+  padding: 12px 15px;
+
+  border: 1px solid #e5eae7;
+  border-radius: 13px;
+
+  background: #ffffff;
+}
+
+.filter-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.filter-title {
+  min-width: 110px;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-right: 4px;
+}
+
+.filter-title span {
+  color: #26352d;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.filter-title small {
+  margin-top: 3px;
+
+  color: #98a29d;
+
+  font-size: 12px;
+}
+
+.station-filter-bar select,
+.filter-chip {
+  height: 40px;
+
+  padding: 0 14px;
+
+  border: 1.5px solid #e1e7e3;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #334139;
+
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.station-filter-bar select {
+  cursor: pointer;
+}
+
+.filter-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
+}
+
+.filter-chip svg {
+  color: #079b43;
+}
+
+.filter-chip:hover {
+  border-color: #079b43;
+  background: #f2faf5;
+}
+
+.filter-chip.active {
+  border-color: #079b43;
+  background: #e6f8ec;
+  color: #079b43;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(7, 155, 67, 0.15);
+}
+
+.reset-filter {
+  border: none;
+
+  background: transparent;
+  color: #079b43;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
+
+  cursor: pointer;
+}
+
+.reset-filter:hover {
+  background: #e9f8ef;
+}
+
+
+/* =========================================================
+   MAIN CONTENT GRID
+========================================================= */
+
+.find-content-grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(0, 0.92fr);
+
+  gap: 16px;
+
+  margin-top: 15px;
+}
+
+.find-stations-panel,
+.find-map-panel {
+  border: 1px solid #e5eae7;
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.025);
+}
+
+.find-stations-panel {
+  padding: 18px;
+}
+
+.find-section-heading,
+.map-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 14px;
+}
+
+.find-section-heading h3,
+.map-panel-header h3 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 13px;
+  font-weight: 720;
+}
+
+.find-section-heading p,
+.map-panel-header p {
+  margin: 4px 0 0;
+
+  color: #8b9690;
+
+  font-size: 13px;
+}
+
+.sort-button {
+  height: 31px;
+
+  padding: 0 10px;
+
+  border: 1px solid #e1e7e3;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #68756e;
+
+  font-family: inherit;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   STATION CARDS
+========================================================= */
+
+.find-station-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.find-station-card {
+  display: grid;
+
+  grid-template-columns: 128px 1fr;
+
+  gap: 13px;
+
+  padding: 10px;
+
+  border: 1px solid #e9eeeb;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.find-station-card:hover,
+.find-station-card.selected {
+  transform: translateY(-1px);
+
+  border-color: #a9dcbc;
+
+  box-shadow: 0 7px 20px rgba(8, 163, 73, 0.07);
+}
+
+.find-station-card.selected {
+  background: #fbfefc;
+}
+
+
+/* IMAGE */
+
+.station-image-wrapper {
+  position: relative;
+
+  min-height: 150px;
+
+  overflow: hidden;
+
+  border-radius: 9px;
+}
+
+.station-image-wrapper img {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+
+  object-fit: cover;
+}
+
+.station-favourite {
+  position: absolute;
+
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.93);
+  color: #536159;
+
+  cursor: pointer;
+}
+
+.station-favourite:hover {
+  color: #e94b79;
+}
+
+
+/* CARD CONTENT */
+
+.station-card-content {
+  min-width: 0;
+}
+
+.station-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.station-badges {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-bottom: 6px;
+}
+
+.hub-badge,
+.public-station-badge,
+.available-badge {
+  padding: 4px 7px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.hub-badge {
+  background: #e1f7e9;
+  color: #078f40;
+}
+
+.public-station-badge {
+  background: #eef1ef;
+  color: #69766f;
+}
+
+.available-badge {
+  background: #f0faf4;
+  color: #079b43;
+}
+
+.station-card-header h4 {
+  margin: 0;
+
+  color: #17211c;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  line-height: 1.35;
+}
+
+.station-address {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 5px;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.station-address svg {
+  color: #079b43;
+}
+
+
+/* RATING */
+
+.station-rating-box {
+  flex-shrink: 0;
+
+  text-align: right;
+}
+
+.station-rating-box > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 3px;
+}
+
+.rating-star {
+  color: #f5a623;
+
+  font-size: 12px;
+}
+
+.station-rating-box strong {
+  color: #26352d;
+
+  font-size: 13px;
+}
+
+.station-rating-box small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #9aa39e;
+
+  font-size: 11px;
+}
+
+
+/* SPECS */
+
+.station-specifications {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 6px;
+
+  margin-top: 11px;
+}
+
+.station-specifications > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 7px;
+
+  border-radius: 7px;
+
+  background: #f7f9f8;
+}
+
+.station-specifications svg {
+  flex-shrink: 0;
+
+  color: #079b43;
+}
+
+.station-specifications span {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.station-specifications small {
+  color: #9aa39e;
+
+  font-size: 11px;
+}
+
+.station-specifications strong {
+  margin-top: 2px;
+
+  color: #45534b;
+
+  font-size: 12px;
+}
+
+
+/* FOOTER */
+
+.station-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: 11px;
+}
+
+.charger-availability {
+  color: #079b43;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.availability-bar {
+  width: 110px;
+  height: 4px;
+
+  overflow: hidden;
+
+  margin-top: 5px;
+
+  border-radius: 20px;
+
+  background: #e5ebe7;
+}
+
+.availability-bar div {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #08a349;
+}
+
+.public-info-text {
+  color: #89948e;
+
+  font-size: 12px;
+}
+
+.station-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.details-station-button,
+.book-station-button {
+  height: 36px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 14px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.details-station-button {
+  border: 1px solid #dce4df;
+  background: #ffffff;
+  color: #334139;
+}
+
+.details-station-button:hover {
+  background: #f7faf8;
+  border-color: #079b43;
+  color: #079b43;
+}
+
+.book-station-button {
+  border: 1px solid #08a349;
+  background: #08a349;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(8, 163, 73, 0.2);
+}
+
+.book-station-button:hover {
+  background: #078f40;
+  box-shadow: 0 4px 10px rgba(8, 163, 73, 0.3);
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+.no-stations {
+  min-height: 330px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: #8b9690;
+}
+
+.no-stations svg {
+  color: #9bcbaa;
+}
+
+.no-stations h3 {
+  margin: 12px 0 0;
+
+  color: #35433b;
+
+  font-size: 13px;
+}
+
+.no-stations p {
+  margin: 6px 0 14px;
+
+  font-size: 13px;
+}
+
+.no-stations button {
+  height: 32px;
+
+  padding: 0 12px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #08a349;
+  color: white;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.find-map-panel {
+  position: sticky;
+  top: 20px;
+
+  height: fit-content;
+
+  padding: 18px;
+}
+
+.map-live-badge {
+  padding: 5px 8px;
+
+  border-radius: 20px;
+
+  background: #e7f8ed;
+  color: #079b43;
+
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.find-real-map {
+  height: 530px;
+
+  overflow: hidden;
+
+  border: 1px solid #e3e9e5;
+  border-radius: 11px;
+
+  background: #edf2ef;
+}
+
+.find-leaflet-map {
+  width: 100%;
+  height: 100%;
+}
+
+.find-leaflet-map .leaflet-control-zoom {
+  overflow: hidden;
+
+  border: none !important;
+  border-radius: 9px !important;
+
+  box-shadow: 0 5px 15px rgba(15, 23, 42, 0.12) !important;
+}
+
+
+/* MAP POPUP */
+
+.find-map-popup {
+  min-width: 180px;
+}
+
+.find-map-popup strong {
+  display: block;
+
+  color: #111827;
+
+  font-size: 11px;
+}
+
+.find-map-popup > span {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #59675f;
+
+  font-size: 13px;
+}
+
+.find-map-popup p {
+  margin: 6px 0;
+
+  color: #7c8982;
+
+  font-size: 13px;
+}
+
+.find-map-popup small {
+  display: block;
+
+  color: #079b43;
+
+  font-size: 13px;
+}
+
+.find-map-popup button {
+  height: 28px;
+
+  margin-top: 9px;
+  padding: 0 11px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #08a349;
+  color: white;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+
+/* SELECTED STATION */
+
+.selected-station-bar {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 10px;
+  padding: 9px 10px;
+
+  border: 1px solid #e1e9e4;
+  border-radius: 9px;
+
+  background: #f8fbf9;
+}
+
+.selected-station-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #e2f7ea;
+  color: #079b43;
+}
+
+.selected-station-bar > div:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-station-bar small {
+  color: #96a09a;
+
+  font-size: 11px;
+}
+
+.selected-station-bar strong {
+  overflow: hidden;
+
+  margin-top: 2px;
+
+  color: #34423a;
+
+  font-size: 13px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected-station-bar > span {
+  color: #079b43;
+
+  font-size: 13px;
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .find-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .find-map-panel {
+    position: static;
+  }
+
+  .find-real-map {
+    height: 450px;
+  }
+
+  .station-search-hero {
+    gap: 25px;
+  }
+
+  .main-station-search {
+    width: 48%;
+  }
+}
+
+
+@media (max-width: 1080px) {
+  .find-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .find-real-map {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 850px) {
+  .find-sidebar {
+    display: none;
+  }
+
+  .find-main {
+    width: 100%;
+    margin-left: 0;
+    padding: 22px;
+  }
+
+  .station-search-hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .main-station-search {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .find-main {
+    padding: 15px;
+  }
+
+  .find-header h1 {
+    font-size: 20px;
+  }
+
+  .find-header p {
+    font-size: 13px;
+  }
+
+  .find-logout {
+    width: 45px;
+
+    padding: 0;
+
+    justify-content: center;
+
+    font-size: 0;
+  }
+
+  .station-search-hero {
+    padding: 24px 20px;
+  }
+
+  .station-search-text h2 {
+    font-size: 25px;
+  }
+
+  .station-filter-bar {
+    align-items: flex-start;
+  }
+
+  .filter-left {
+    width: 100%;
+  }
+
+  .filter-title {
+    width: 100%;
+  }
+
+  .reset-filter {
+    white-space: nowrap;
+  }
+
+  .find-station-card {
+    grid-template-columns: 1fr;
+  }
+
+  .station-image-wrapper {
+    height: 170px;
+  }
+
+  .station-specifications {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .find-real-map {
+    height: 360px;
+  }
+}
+
+
+@media (max-width: 430px) {
+
+  .station-filter-bar {
+    flex-direction: column;
+  }
+
+  .station-filter-bar select,
+  .filter-chip {
+    flex: 1;
+  }
+
+  .station-card-header {
+    flex-direction: column;
+  }
+
+  .station-rating-box {
+    text-align: left;
+  }
+
+  .station-rating-box > div {
+    justify-content: flex-start;
+  }
+
+  .station-specifications {
+    grid-template-columns: 1fr;
+  }
+
+  .station-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .station-buttons {
+    width: 100%;
+  }
+
+  .station-buttons button {
+    flex: 1;
+  }
+}
+
+.station-favourite {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.station-favourite.active {
+  background: #e7f8ed;
+  color: #08a349;
+  border-color: #bfe8ce;
+}
+
+.station-favourite.active svg {
+  fill: #08a349;
+  color: #08a349;
+}
+
+.station-favourite:hover {
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   FIND STATIONS - FINAL READABILITY UPGRADE
+========================================================= */
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.station-filter-bar {
+  min-height: 72px;
+  padding: 12px 18px;
+}
+
+.filter-left {
+  gap: 12px;
+}
+
+
+/* Filter title */
+
+.filter-title span {
+  font-size: 14px !important;
+  font-weight: 800;
+}
+
+.filter-title small {
+  margin-top: 3px;
+
+  font-size: 11px !important;
+}
+
+
+/* Dropdowns */
+
+.filter-left select {
+  min-width: 145px;
+  height: 46px;
+
+  padding: 0 38px 0 15px;
+
+  border-radius: 10px;
+
+  font-size: 13px !important;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* CCS / Fast Charging */
+
+.filter-chip {
+  min-height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 0 17px;
+
+  font-size: 13px !important;
+  font-weight: 650 !important;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.filter-chip svg {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+}
+
+
+/* Selected filter */
+
+.filter-chip.active {
+  border-color: #08a349;
+
+  background: #e9f8ef;
+  color: #079b43;
+
+  box-shadow:
+    0 0 0 2px rgba(8, 163, 73, 0.08);
+}
+
+.filter-chip.active svg {
+  color: #08a349;
+}
+
+
+/* Reset */
+
+.reset-filter {
+  padding: 10px 12px;
+
+  font-size: 12px !important;
+  font-weight: 700 !important;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   CHARGING STATIONS PANEL
+========================================================= */
+
+.find-stations-panel {
+  padding: 20px;
+}
+
+
+/* Heading */
+
+.find-section-heading {
+  margin-bottom: 17px;
+}
+
+.find-section-heading h3 {
+  margin: 0;
+
+  font-size: 18px !important;
+  font-weight: 750;
+
+  color: #111827;
+}
+
+.find-section-heading p {
+  margin: 5px 0 0;
+
+  font-size: 11px !important;
+
+  color: #8b9690;
+}
+
+
+/* Sort button */
+
+.sort-button {
+  height: 36px;
+
+  padding: 0 13px;
+
+  border-radius: 8px;
+
+  font-size: 11px !important;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   STATION LIST
+========================================================= */
+
+.find-station-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   STATION CARD
+========================================================= */
+
+.find-station-card {
+  display: grid;
+
+  grid-template-columns: 140px 1fr;
+
+  gap: 16px;
+
+  padding: 12px;
+
+  border: 1px solid #e6ece8;
+  border-radius: 13px;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.find-station-card:hover,
+.find-station-card.selected {
+  transform: translateY(-2px);
+
+  border-color: #a9dcbc;
+
+  box-shadow:
+    0 8px 24px rgba(8, 163, 73, 0.08);
+}
+
+.find-station-card.selected {
+  background: #fbfefc;
+}
+
+
+/* =========================================================
+   STATION IMAGE
+========================================================= */
+
+.station-image-wrapper {
+  position: relative;
+
+  min-height: 170px;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+}
+
+.station-image-wrapper img {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* Favourite button */
+
+.station-favourite {
+  position: absolute;
+
+  top: 9px;
+  right: 9px;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(225, 231, 227, 0.8);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  color: #536159;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.08);
+
+  transition: all 0.2s ease;
+}
+
+.station-favourite:hover {
+  transform: scale(1.07);
+
+  color: #e94b79;
+}
+
+.station-favourite.active {
+  border-color: #bfe8ce;
+
+  background: #e7f8ed;
+
+  color: #08a349;
+}
+
+.station-favourite.active svg {
+  fill: #08a349;
+
+  color: #08a349;
+}
+
+
+/* =========================================================
+   STATION CONTENT
+========================================================= */
+
+.station-card-content {
+  min-width: 0;
+}
+
+.station-card-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.station-badges {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom: 7px;
+}
+
+.hub-badge,
+.public-station-badge,
+.available-badge {
+  padding: 5px 8px;
+
+  border-radius: 20px;
+
+  font-size: 13px !important;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+.hub-badge {
+  background: #e1f7e9;
+
+  color: #078f40;
+}
+
+.public-station-badge {
+  background: #eef1ef;
+
+  color: #69766f;
+}
+
+.available-badge {
+  background: #f0faf4;
+
+  color: #079b43;
+}
+
+
+/* =========================================================
+   STATION NAME
+========================================================= */
+
+.station-card-header h4 {
+  margin: 0;
+
+  color: #17211c;
+
+  font-size: 14px !important;
+  font-weight: 750;
+
+  line-height: 1.35;
+}
+
+
+/* Address */
+
+.station-address {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 7px;
+
+  color: #7e8b84;
+
+  font-size: 13px !important;
+
+  line-height: 1.4;
+}
+
+.station-address svg {
+  flex-shrink: 0;
+
+  width: 14px;
+  height: 14px;
+
+  color: #079b43;
+}
+
+
+/* =========================================================
+   RATING
+========================================================= */
+
+.station-rating-box {
+  flex-shrink: 0;
+
+  text-align: right;
+}
+
+.station-rating-box > div {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 4px;
+}
+
+.rating-star {
+  color: #f5a623;
+
+  font-size: 15px;
+}
+
+.station-rating-box strong {
+  color: #26352d;
+
+  font-size: 12px !important;
+  font-weight: 700;
+}
+
+.station-rating-box small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #9aa39e;
+
+  font-size: 13px !important;
+}
+
+
+/* =========================================================
+   DISTANCE / POWER / CONNECTOR
+========================================================= */
+
+.station-specifications {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 8px;
+
+  margin-top: 14px;
+}
+
+.station-specifications > div {
+  min-height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 10px;
+
+  border-radius: 8px;
+
+  background: #f7f9f8;
+}
+
+.station-specifications svg {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  color: #079b43;
+}
+
+.station-specifications span {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.station-specifications small {
+  color: #8f9a94;
+
+  font-size: 13px !important;
+
+  line-height: 1.2;
+}
+
+.station-specifications strong {
+  margin-top: 3px;
+
+  color: #3f4e46;
+
+  font-size: 11px !important;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.station-card-footer {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: 14px;
+}
+
+
+/* Availability */
+
+.charger-availability {
+  color: #079b43;
+
+  font-size: 13px !important;
+  font-weight: 700;
+}
+
+.availability-bar {
+  width: 125px;
+  height: 5px;
+
+  overflow: hidden;
+
+  margin-top: 7px;
+
+  border-radius: 20px;
+
+  background: #e5ebe7;
+}
+
+.availability-bar div {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #08a349;
+}
+
+
+/* Public station info */
+
+.public-info-text {
+  max-width: 200px;
+
+  color: #7d8983;
+
+  font-size: 13px !important;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   DETAILS + BOOK NOW
+========================================================= */
+
+.station-buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+.station-buttons button,
+.details-station-button {
+  height: 34px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 13px;
+
+  border-radius: 7px;
+
+  font-family: inherit;
+
+  font-size: 13px !important;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+/* Details */
+
+.details-station-button {
+  border: 1px solid #dce4df;
+
+  background: #ffffff;
+
+  color: #536159;
+
+  text-decoration: none;
+}
+
+.details-station-button:hover {
+  border-color: #9bcfac;
+
+  background: #f3faf6;
+
+  color: #079b43;
+}
+
+
+/* Book */
+
+.book-station-button {
+  border: 1px solid #08a349;
+
+  background: #08a349;
+
+  color: #ffffff;
+}
+
+.book-station-button:hover {
+  border-color: #078f40;
+
+  background: #078f40;
+}
+
+
+/* =========================================================
+   MAP PANEL TYPOGRAPHY
+========================================================= */
+
+.map-panel-header h3 {
+  font-size: 18px !important;
+  font-weight: 750;
+}
+
+.map-panel-header p {
+  margin-top: 5px;
+
+  font-size: 11px !important;
+}
+
+.map-live-badge {
+  padding: 6px 9px;
+
+  font-size: 13px !important;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   MAP POPUP
+========================================================= */
+
+.find-map-popup strong {
+  font-size: 13px !important;
+}
+
+.find-map-popup > span {
+  font-size: 13px !important;
+}
+
+.find-map-popup p {
+  font-size: 13px !important;
+}
+
+.find-map-popup small {
+  font-size: 13px !important;
+}
+
+.find-map-popup button {
+  height: 32px;
+
+  padding: 0 12px;
+
+  font-size: 13px !important;
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   SELECTED STATION
+========================================================= */
+
+.selected-station-bar small {
+  font-size: 13px !important;
+}
+
+.selected-station-bar strong {
+  font-size: 11px !important;
+}
+
+.selected-station-bar > span {
+  font-size: 13px !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .station-filter-bar {
+    align-items: flex-start;
+  }
+
+  .filter-left {
+    width: 100%;
+  }
+
+  .filter-title {
+    width: 100%;
+  }
+
+  .filter-left select {
+    min-width: 135px;
+  }
+
+  .find-station-card {
+    grid-template-columns: 1fr;
+  }
+
+  .station-image-wrapper {
+    height: 190px;
+  }
+
+  .station-card-header h4 {
+    font-size: 15px !important;
+  }
+
+  .station-specifications {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media (max-width: 430px) {
+
+  .station-filter-bar {
+    flex-direction: column;
+  }
+
+  .filter-left select,
+  .filter-chip {
+    flex: 1;
+  }
+
+  .station-card-header {
+    flex-direction: column;
+  }
+
+  .station-rating-box {
+    text-align: left;
+  }
+
+  .station-rating-box > div {
+    justify-content: flex-start;
+  }
+
+  .station-specifications {
+    grid-template-columns: 1fr;
+  }
+
+  .station-card-footer {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .station-buttons {
+    width: 100%;
+  }
+
+  .station-buttons button,
+  .details-station-button {
+    flex: 1;
+
+    height: 38px;
+
+    font-size: 13px !important;
+    font-weight: 600;
+  }
+}

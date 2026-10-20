@@ -1,0 +1,96 @@
+[
+  {
+    "id": "owner_kasun_01",
+    "email": "owner@evchargehub.lk",
+    "username": "owner",
+    "passwordHash": "46fec4026b3e35f73b1a4ea23cc4b21d9802a0861998a6f1338cd4ea2b07d0fe62f5c5554c425864ede780b711d9477406cd423e898574e0bae347bc8a45e4e2",
+    "salt": "348fe2bcc0fcee8e41effb5499ae3a33",
+    "fullName": "Eng. Kasun Perera",
+    "role": "owner",
+    "phone": "+94 77 123 4567",
+    "companyName": "EcoCharge Lanka Holdings",
+    "businessAddress": "No. 45, Galle Road, Colombo 03, Sri Lanka",
+    "profilePicture": null,
+    "createdAt": "2026-01-15T08:00:00.000Z",
+    "lastLoginAt": "2026-10-15T18:43:21.660Z",
+    "passwordChangedAt": "2026-09-01T12:00:00.000Z",
+    "sessions": [
+      {
+        "sessionId": "s_2ae6bd1f62200c78",
+        "token": "sess_3b3ca1fd309f53361e1684b022e9c4d2e9fc818c7852000c019778966e713d3a",
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+        "createdAt": "2026-10-15T18:43:21.660Z",
+        "lastActiveAt": "2026-10-15T18:43:21.660Z"
+      },
+      {
+        "sessionId": "s_f35a964eaa7f05ff",
+        "token": "sess_d7cb51d2823ec790d6a3fa326edeeb73e4c03ea82cfdfa4888a505dba68273b6",
+        "ip": "::1",
+        "userAgent": "node",
+        "createdAt": "2026-10-15T18:09:04.136Z",
+        "lastActiveAt": "2026-10-15T18:09:04.136Z"
+      },
+      {
+        "sessionId": "s_8f411b413495ed45",
+        "token": "sess_11e81d6aa92667f2d747842221c2a7fe03b85baf3eee70bb8096e2998b01a7eb",
+        "ip": "::1",
+        "userAgent": "node",
+        "createdAt": "2026-10-15T18:08:54.136Z",
+        "lastActiveAt": "2026-10-15T18:08:54.136Z"
+      }
+    ],
+    "resetTokens": []
+  },
+  {
+    "id": "user_saman_01",
+    "email": "user@evchargehub.lk",
+    "username": "user",
+    "passwordHash": "cd6b6ff3b5d9486d0199c4a736395b190136d91f2374db941fe3c7ae5d901d3debaf93b588b661091c6f404d6cd56940072416ae916c65269ad3b1586e3a2d14",
+    "salt": "a8f4c2e1b3d579201468bfdc12345678",
+    "fullName": "Saman Kumara",
+    "role": "user",
+    "phone": "+94 71 987 6543",
+    "companyName": "",
+    "businessAddress": "",
+    "profilePicture": null,
+    "createdAt": "2026-02-10T09:00:00.000Z",
+    "lastLoginAt": "2026-10-15T18:42:18.221Z",
+    "passwordChangedAt": "2026-09-01T12:00:00.000Z",
+    "sessions": [
+      {
+        "sessionId": "s_5b86769302c50b2f",
+        "token": "sess_6dcbf1732b598768f5854beb54a0a3a6d4714fb8fe718761d2f4b19466c505ea",
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+        "createdAt": "2026-10-15T18:42:18.221Z",
+        "lastActiveAt": "2026-10-15T18:42:18.221Z"
+      },
+      {
+        "sessionId": "s_5a99cb90b64a76eb",
+        "token": "sess_0e7071ca22d549fc5033597a1bff88c86dd14a161931818be9f856611c7ed3a9",
+        "ip": "::1",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+        "createdAt": "2026-10-15T18:34:43.858Z",
+        "lastActiveAt": "2026-10-15T18:34:43.858Z"
+      },
+      {
+        "sessionId": "s_0c4cf44b61768b6f",
+        "token": "sess_b3f53ff1da6725d6c4fbf7040403338e33c1d293aa5d41b344681acf519909eb",
+        "ip": "::1",
+        "userAgent": "node",
+        "createdAt": "2026-10-15T18:09:04.173Z",
+        "lastActiveAt": "2026-10-15T18:09:04.173Z"
+      },
+      {
+        "sessionId": "s_d295add8e55a2042",
+        "token": "sess_643a578b37e3ae8002f8b39d5403106c651cab5096efeb5e1c8d0a89d533ae4a",
+        "ip": "::1",
+        "userAgent": "node",
+        "createdAt": "2026-10-15T18:08:54.173Z",
+        "lastActiveAt": "2026-10-15T18:08:54.173Z"
+      }
+    ],
+    "resetTokens": []
+  }
+]
