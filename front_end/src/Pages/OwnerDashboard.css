@@ -1,0 +1,1600 @@
+/**
+ * EVChargeHub — Modern SaaS Station Owner Dashboard
+ * Visual Direction: Stripe / Linear / Energy Management Platform
+ * Clean Emerald Branding (#059669), Soft Neutral (#F8FAFC), Crisp Elevation
+ */
+
+/* =========================================================
+   1. DASHBOARD ROOT & LAYOUT GEOMETRY
+========================================================= */
+.owner-dashboard-page {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+  color: #0f172a;
+  box-sizing: border-box;
+}
+
+.owner-dashboard-main {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0;
+  padding: 28px 32px 64px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* =========================================================
+   2. HEADER QUICK ACTIONS & TELEMETRY PILL
+========================================================= */
+.dash-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dash-header-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #047857;
+  white-space: nowrap;
+}
+
+.dash-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  animation: dashPulseGreen 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes dashPulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45); }
+  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.dash-header-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #059669;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 1px solid #047857;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.dash-header-primary-btn:hover {
+  background: #047857;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+}
+
+/* Toast Feedback */
+.dash-toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  animation: slideToast 0.25s ease-out;
+}
+
+.dash-toast-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+@keyframes slideToast {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   3. HERO BANNER & LIVE TELEMETRY CARD
+========================================================= */
+.dash-hero-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #091e17 0%, #0d281f 45%, #053b2a 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 35px -8px rgba(5, 150, 105, 0.22), 0 4px 12px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.24);
+  padding: 34px 40px;
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 36px;
+  align-items: center;
+}
+
+/* Subtle glowing backdrop radial gradient */
+.dash-hero-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: 15%;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dash-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dash-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #a7f3d0;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dash-hero-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.dash-hero-description {
+  font-size: 14.5px;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 580px;
+}
+
+.dash-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.dash-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #059669;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+  border: 1px solid #10b981;
+}
+
+.dash-btn-primary:hover {
+  background: #047857;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.45);
+}
+
+.dash-btn-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.15s ease;
+}
+
+.dash-btn-glass:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Right Side Telemetry Card */
+.dash-hero-visual {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dash-telemetry-card {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.telemetry-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.telemetry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.2);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #6ee7b7;
+  letter-spacing: 0.05em;
+}
+
+.telemetry-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: dashPulseGreen 2s infinite ease-in-out;
+}
+
+.telemetry-station-count {
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.telemetry-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.telemetry-main-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.telemetry-stat-value {
+  font-size: 34px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.telemetry-stat-total {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.telemetry-subtext {
+  font-size: 12.5px;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.telemetry-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.telemetry-progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+  transition: width 0.5s ease;
+}
+
+.telemetry-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.telemetry-mini-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.telemetry-mini-stat small {
+  font-size: 10.5px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.telemetry-mini-stat strong {
+  font-size: 12.5px;
+  color: #ffffff;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.telemetry-green {
+  color: #34d399 !important;
+}
+
+/* =========================================================
+   4. REDESIGNED KPI CARDS (4 PREMIUM CARDS)
+========================================================= */
+.dash-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.dash-kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 148px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.dash-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+  border-color: #cbd5e1;
+}
+
+.kpi-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.kpi-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kpi-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpi-icon-box.green {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.kpi-icon-box.blue {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.kpi-icon-box.amber {
+  background: #fffbeb;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+
+.kpi-icon-box.purple {
+  background: #f5f3ff;
+  color: #7c3aed;
+  border: 1px solid #ddd6fe;
+}
+
+.kpi-value-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.kpi-value {
+  font-size: 30px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.kpi-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.kpi-badge.emerald {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.kpi-badge.blue {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.kpi-badge.amber {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.kpi-footer {
+  padding-top: 8px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.kpi-subtext {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+  display: block;
+}
+
+/* =========================================================
+   5. ROW 1: REVENUE OVERVIEW (LARGER) + NETWORK HEALTH (SMALLER)
+========================================================= */
+.dash-split-row-1 {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+}
+
+.dash-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dash-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dash-panel-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.dash-panel-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+.dash-panel-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.dash-pill-total {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+  white-space: nowrap;
+}
+
+.dash-panel-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #059669;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.dash-panel-link:hover {
+  color: #047857;
+  text-decoration: underline;
+}
+
+.dash-status-tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.dash-status-tag.online {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+/* Revenue Chart Area */
+.dash-chart-area {
+  padding: 16px 8px 6px;
+}
+
+.dash-bars-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 180px;
+  gap: 14px;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.dash-bar-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.dash-bar-track {
+  width: 100%;
+  max-width: 46px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+
+.dash-bar-fill {
+  width: 100%;
+  background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+  min-height: 8px;
+}
+
+.dash-bar-track:hover .dash-bar-fill {
+  background: linear-gradient(180deg, #34d399 0%, #047857 100%);
+  filter: brightness(1.08);
+}
+
+.dash-bar-tooltip {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 10;
+}
+
+.dash-bar-track:hover .dash-bar-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.dash-bar-day {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* Revenue 4-Stats Grid */
+.dash-revenue-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.dash-revenue-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dash-revenue-stat small {
+  font-size: 11.5px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.dash-revenue-stat strong {
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.emerald-text {
+  color: #059669 !important;
+}
+
+/* Network Health Body */
+.dash-health-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dash-health-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dash-health-bar {
+  width: 100%;
+  height: 10px;
+  background: #f1f5f9;
+  border-radius: 9999px;
+  overflow: hidden;
+  display: flex;
+}
+
+.health-bar-segment {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.health-bar-segment.available {
+  background: #10b981;
+}
+
+.health-bar-segment.in-use {
+  background: #3b82f6;
+}
+
+.health-bar-segment.maintenance {
+  background: #f59e0b;
+}
+
+.health-bar-segment.offline {
+  background: #ef4444;
+}
+
+.dash-health-legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.health-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.available { background: #10b981; }
+.legend-dot.in-use { background: #3b82f6; }
+.legend-dot.maintenance { background: #f59e0b; }
+.legend-dot.offline { background: #ef4444; }
+
+.legend-info {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.legend-info strong {
+  font-size: 13.5px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.legend-info span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.dash-health-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dash-health-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.health-row-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.health-row-icon.green {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.health-row-icon.blue {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.health-row-icon.amber {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+.health-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.health-row-text strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.health-row-text span {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   6. ROW 2: STATION PERFORMANCE (50%) + RECENT BOOKINGS (50%)
+========================================================= */
+.dash-split-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Station Performance List */
+.dash-stations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dash-station-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.15s ease;
+}
+
+.dash-station-card:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.station-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.station-card-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.station-icon-chip {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.station-card-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.station-card-address {
+  font-size: 12.5px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.station-card-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.dash-power-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  white-space: nowrap;
+}
+
+.dash-status-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.dash-status-pill.active {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.station-card-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.st-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.st-metric small {
+  font-size: 11px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.st-metric strong {
+  font-size: 13.5px;
+  color: #0f172a;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.station-card-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progress-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.progress-labels strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.progress-track {
+  width: 100%;
+  height: 5px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+.station-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.station-details-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #059669;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.station-details-btn:hover {
+  color: #047857;
+  gap: 8px;
+}
+
+/* Recent Bookings Table */
+.dash-bookings-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.dash-bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.dash-bookings-table th {
+  padding: 12px 14px;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.dash-bookings-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #0f172a;
+  vertical-align: middle;
+}
+
+.dash-bookings-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dash-bookings-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.booking-customer-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 140px;
+}
+
+.booking-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #059669;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.booking-customer-name {
+  display: block;
+  font-size: 13px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.booking-vehicle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.booking-station-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 150px;
+}
+
+.booking-station-cell strong {
+  font-size: 13px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.booking-station-cell small {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.booking-time-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.booking-amount {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.dash-booking-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dash-booking-badge.active {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.dash-booking-badge.confirmed {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.dash-booking-badge.completed {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.dash-booking-badge.pending {
+  background: #fffbeb;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+
+.dash-booking-badge.cancelled {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* =========================================================
+   7. ROW 3: QUICK ACTIONS SECTION (4 COMPACT MODERN CARDS)
+========================================================= */
+.dash-quick-actions-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.quick-actions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quick-actions-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.quick-actions-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 4px 0 0;
+}
+
+.dash-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.dash-action-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #0f172a;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  height: 100%;
+}
+
+.dash-action-card:hover {
+  transform: translateY(-2px);
+  border-color: #059669;
+  box-shadow: 0 10px 25px -4px rgba(5, 150, 105, 0.12), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+}
+
+.dash-action-card:hover .action-card-arrow {
+  transform: translateX(4px);
+  color: #059669;
+}
+
+.action-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dash-action-card:hover .action-card-icon {
+  transform: scale(1.05);
+}
+
+.action-card-icon.green {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.action-card-icon.blue {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.action-card-icon.amber {
+  background: #fffbeb;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+
+.action-card-icon.emerald {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.action-card-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.action-card-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.action-card-desc {
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.4;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.action-card-arrow {
+  font-size: 18px;
+  color: #94a3b8;
+  transition: transform 0.2s ease, color 0.2s ease;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* =========================================================
+   8. MODAL DIALOGS
+========================================================= */
+.owner-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.owner-modal-card {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  padding: 28px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.modal-header p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 4px 0 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.modal-close-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.modal-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.modal-field input,
+.modal-field select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.modal-field input:focus,
+.modal-field select:focus {
+  border-color: #059669;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+}
+
+.modal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.modal-cancel-btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-cancel-btn:hover {
+  background: #f8fafc;
+}
+
+.modal-submit-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #059669;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.modal-submit-btn:hover {
+  background: #047857;
+}
+
+/* =========================================================
+   9. RESPONSIVE BREAKPOINTS
+========================================================= */
+@media (max-width: 1440px) {
+  .dash-split-row-1 {
+    grid-template-columns: 1.45fr 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  .dash-hero-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px;
+  }
+
+  .dash-hero-visual {
+    justify-content: stretch;
+  }
+
+  .dash-telemetry-card {
+    max-width: 100%;
+  }
+
+  .dash-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dash-split-row-1,
+  .dash-split-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-actions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .owner-dashboard-main {
+    padding: 20px 16px 48px;
+    gap: 20px;
+  }
+
+  .dash-header-actions {
+    flex-wrap: wrap;
+  }
+
+  .dash-hero-card {
+    padding: 24px 20px;
+  }
+
+  .dash-hero-title {
+    font-size: 26px;
+  }
+
+  .dash-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dash-btn-primary,
+  .dash-btn-glass {
+    justify-content: center;
+  }
+
+  .dash-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .dash-actions-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .dash-revenue-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .dash-health-legend {
+    grid-template-columns: 1fr;
+  }
+
+  .station-card-metrics {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dash-hero-title {
+    font-size: 22px;
+  }
+
+  .kpi-value {
+    font-size: 26px;
+  }
+
+  .modal-row {
+    grid-template-columns: 1fr;
+  }
+}
