@@ -1,0 +1,64 @@
+# ==============================================================
+# EVChargeHub - Spring Boot Application Configuration
+# ==============================================================
+# This file configures the Spring Boot application.
+# Sensitive values (DB password, JWT secret) are read from
+# environment variables so they are never committed to Git.
+# ==============================================================
+
+spring:
+  application:
+    name: EVChargeHub
+
+  # ---------- DATABASE (PostgreSQL) ----------
+  datasource:
+    # Connection URL — reads from environment variable DB_URL
+    # Default: jdbc:postgresql://localhost:5432/evchargehub
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/evchargehub}
+
+    # Database credentials — read from environment variables
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:}
+
+    # PostgreSQL JDBC driver
+    driver-class-name: org.postgresql.Driver
+
+  # ---------- JPA / HIBERNATE ----------
+  jpa:
+    # Use PostgreSQL-specific SQL dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+    hibernate:
+      # "update" mode: Hibernate will automatically create or update
+      # database tables to match your entity classes.
+      # Good for development. In production, use "validate" with Flyway migrations.
+      ddl-auto: update
+
+    # Show SQL queries in the console (helpful for debugging)
+    show-sql: true
+
+    properties:
+      hibernate:
+        # Format SQL output for readability
+        format_sql: true
+
+# ---------- SERVER ----------
+server:
+  # The backend runs on port 8080 (frontend Vite dev server runs on 5173)
+  port: 8080
+
+# ---------- JWT ----------
+# These values will be used by the security module (configured in a later step)
+jwt:
+  secret: ${JWT_SECRET:default-dev-secret-change-in-production-must-be-at-least-256-bits-long}
+  expiration: 86400000  # Token validity: 24 hours in milliseconds
+
+# ---------- LOGGING ----------
+logging:
+  level:
+    # Show Hibernate SQL parameter values (helpful for debugging)
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    # Application-level logging
+    com.evchargehub: DEBUG
+

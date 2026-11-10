@@ -1,0 +1,88 @@
+services:
+  # ==========================================
+  # Database Service (PostgreSQL 18)
+  # ==========================================
+  postgres:
+    image: postgres:18-alpine
+    container_name: evchargehub-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-evchargehub}
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: "${DB_PASSWORD:?Error: DB_PASSWORD must be defined in .env}"
+      PGDATA: /var/lib/postgresql/18/docker
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    ports:
+      # Host port 5433 prevents collision with Windows PostgreSQL on host port 5432
+      - "${POSTGRES_PORT:-5433}:5432"
+    networks:
+      - evchargehub-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres} -d ${DB_NAME:-evchargehub}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ==========================================
+  # Backend Service (Spring Boot 3.4.1 / Java 21)
+  # ==========================================
+  backend:
+    image: evchargehub-backend:1.0
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: evchargehub-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/${DB_NAME:-evchargehub}
+      DB_USERNAME: ${DB_USERNAME:-postgres}
+      DB_PASSWORD: "${DB_PASSWORD:?Error: DB_PASSWORD must be defined in .env}"
+      JWT_SECRET: "${JWT_SECRET:?Error: JWT_SECRET must be defined in .env}"
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-86400000}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    networks:
+      - evchargehub-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "-s", "http://localhost:8080/api/stations"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  # ==========================================
+  # Frontend Service (React + Vite + Nginx)
+  # ==========================================
+  frontend:
+    image: evchargehub-frontend:1.0
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ""
+    container_name: evchargehub-frontend
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "${FRONTEND_PORT:-5173}:80"
+    networks:
+      - evchargehub-network
+
+# ==========================================
+# Named Volumes & Networks
+# ==========================================
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  evchargehub-network:
+    driver: bridge
+

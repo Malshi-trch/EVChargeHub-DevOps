@@ -1,0 +1,115 @@
+/* =========================================================
+   OWNER CHARGERS NETWORK OVERVIEW STYLES
+   EVChargeHub Station Owner Portal
+========================================================= */
+
+.network-table-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.network-chargers-table {
+  width: 100%;
+  min-width: 880px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+
+.network-chargers-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.network-chargers-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.network-chargers-table tr:hover {
+  background: #f8fafc;
+}
+
+.table-charger-id {
+  display: inline-block;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+.table-station-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.station-table-link {
+  font-weight: 700;
+  color: #0f172a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.station-table-link:hover {
+  color: #10b981;
+}
+
+.table-station-info small {
+  color: #64748b;
+  font-size: 11px;
+}
+
+.th-action {
+  text-align: right;
+}
+
+.manage-station-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.manage-station-btn:hover {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
+@media (max-width: 768px) {
+  .network-chargers-table th,
+  .network-chargers-table td {
+    padding: 10px 12px;
+  }
+}
